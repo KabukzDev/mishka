@@ -131,12 +131,16 @@
     </div>
 
     <div class="overlay" id="overlay" onclick="closeImage()">
-        <button class="copy-link-button" onclick="copyImageLink()">Copy Image Link</button>
-        <button class="close-button" onclick="closeImage()">Close</button>
+        <div class="overlay-content">
+            <img id="fullImage" alt="Full Image">
+            <button class="copy-link-button" onclick="copyImageLink()">Copy Image Link</button>
+            <button class="close-button" onclick="closeImage()">Close</button>
+        </div>
     </div>
 
     <script>
         function openImage(imageSrc) {
+            document.getElementById('fullImage').src = imageSrc;
             document.getElementById('overlay').style.display = 'flex';
         }
 
