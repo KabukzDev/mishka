@@ -1,28 +1,158 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-        <link rel="icon" href="manaFavicon.ico" type="image/x-icon">
-        <style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
         body {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: flex-start;
             min-height: 100vh;
             margin: 0;
             background-color: #15202b; /* Twitter Dark Mode background color */
             color: #ffffff; /* Twitter Dark Mode text color */
             font-family: 'Roboto', sans-serif; /* Use Roboto as a fallback */
         }
-        </style>
-        <title>Images</title>
-    </head>
-    <body>
-        <div></div>
-        <img src="/Mana/images/manaOk.png" alt="Mana" width="200" height="200">
-    </body>
-    </html>
+
+        p {
+            font-size: 20px;
+            font-weight: 700; /* Make the font bold */
+            color: #1da1f2; /* Twitter Blue color */
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .image-container {
+            width: calc(25% - 20px); /* 4 columns, 20px margin on each side */
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.1);
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .overlay img {
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 8px;
+        }
+
+        .copy-link-button, .close-button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+    </style>
+    <title>Image Gallery</title>
+</head>
+<body>
+    <div class="image-container" onclick="openImage('manaBlushed.png')">
+        <img src="images\manaBlushed.png" alt="Mana Blushed">
+        <p>Mana Blushed</p>
+    </div>
+
+    <div class="image-container" onclick="openImage('manaCelebration.png')">
+        <img src="images\manaCelebration.png" alt="Mana Celebration">
+        <p>Mana Celebration</p>
+    </div>
+
+    <div class="image-container" onclick="openImage('manaHello.png')">
+        <img src="images\manaHello.png" alt="Mana Hello">
+        <p>Mana Hello</p>
+    </div>
+
+    <div class="image-container" onclick="openImage('manaHug.png')">
+        <img src="images/manaHug.png" alt="Mana Hug">
+        <p>Mana Hug</p>
+    </div>
+
+    <div class="image-container" onclick="openImage('manaHug2.png')">
+        <img src="images/manaHug2.png" alt="Mana Hug 2">
+        <p>Mana Hug 2</p>
+    </div>
+
+    <div class="image-container" onclick="openImage('manaHug3.png')">
+        <img src="images/manaHug3.png" alt="Mana Hug 3">
+        <p>Mana Hug 3</p>
+    </div>
+
+    <div class="image-container" onclick="openImage('manaKiss.png')">
+        <img src="images/manaKiss.png" alt="Mana Kiss">
+        <p>Mana Kiss</p>
+    </div>
+
+    <div class="image-container" onclick="openImage('manaLick.png')">
+        <img src="images/manaLick.png" alt="Mana Lick">
+        <p>Mana Lick</p>
+    </div>
+
+    <div class="image-container" onclick="openImage('manaLove.png')">
+        <img src="images/manaLove.png" alt="Mana Love">
+        <p>Mana Love</p>
+    </div>
+
+    <div class="image-container" onclick="openImage('manaOk.png')">
+        <img src="images/manaOk.png" alt="Mana OK">
+        <p>Mana OK</p>
+    </div>
+
+    <div class="image-container" onclick="openImage('manaPleading.png')">
+        <img src="images/manaPleading.png" alt="Mana Pleading">
+        <p>Mana Pleading</p>
+    </div>
+
+    <div class="overlay" id="overlay" onclick="closeImage()">
+        <button class="copy-link-button" onclick="copyImageLink()">Copy Image Link</button>
+        <button class="close-button" onclick="closeImage()">Close</button>
+    </div>
+
+    <script>
+        function openImage(imageSrc) {
+            document.getElementById('overlay').style.display = 'flex';
+        }
+
+        function closeImage() {
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        function copyImageLink() {
+            const imageUrl = document.getElementById('fullImage').src;
+            navigator.clipboard.writeText(imageUrl).then(() => {
+                alert('Image link copied to clipboard!');
+            }).catch((err) => {
+                console.error('Unable to copy image link', err);
+            });
+        }
+    </script>
+</body>
+</html>
     
