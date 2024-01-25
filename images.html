@@ -61,6 +61,13 @@
             border-radius: 8px;
         }
 
+        .button-container {
+            margin-top: auto; /* Push the button container to the bottom */
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
         .copy-link-button, .close-button {
             margin-top: 10px;
             padding: 10px;
@@ -133,8 +140,10 @@
     <div class="overlay" id="overlay" onclick="closeImage()">
         <div class="overlay-content">
             <img id="fullImage" alt="Full Image">
-            <button class="copy-link-button" onclick="copyImageLink()">Copy Image Link</button>
-            <button class="close-button" onclick="closeImage()">Close</button>
+            <div class="button-container">
+                <button class="copy-link-button" onclick="copyImageLink()">Copy Image Link</button>
+                <button class="close-button" onclick="closeImage()">Close</button>
+            </div>
         </div>
     </div>
 
