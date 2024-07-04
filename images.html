@@ -82,60 +82,7 @@
     <title>Mana Images API</title>
 </head>
 <body>
-    <div class="image-container" onclick="openImage('images/manaBlushed.png')">
-        <img src="images/manaBlushed.png" alt="Mana Blushed">
-        <p>Mana Blushed</p>
-    </div>
-
-    <div class="image-container" onclick="openImage('images/manaCelebration.png')">
-        <img src="images/manaCelebration.png" alt="Mana Celebration">
-        <p>Mana Celebration</p>
-    </div>
-
-    <div class="image-container" onclick="openImage('images/manaHello.png')">
-        <img src="images/manaHello.png" alt="Mana Hello">
-        <p>Mana Hello</p>
-    </div>
-
-    <div class="image-container" onclick="openImage('images/manaHug.png')">
-        <img src="images/manaHug.png" alt="Mana Hug">
-        <p>Mana Hug</p>
-    </div>
-
-    <div class="image-container" onclick="openImage('images/manaHug2.png')">
-        <img src="images/manaHug2.png" alt="Mana Hug 2">
-        <p>Mana Hug 2</p>
-    </div>
-
-    <div class="image-container" onclick="openImage('images/manaHug3.png')">
-        <img src="images/manaHug3.png" alt="Mana Hug 3">
-        <p>Mana Hug 3</p>
-    </div>
-
-    <div class="image-container" onclick="openImage('images/manaKiss.png')">
-        <img src="images/manaKiss.png" alt="Mana Kiss">
-        <p>Mana Kiss</p>
-    </div>
-
-    <div class="image-container" onclick="openImage('images/manaLick.png')">
-        <img src="images/manaLick.png" alt="Mana Lick">
-        <p>Mana Lick</p>
-    </div>
-
-    <div class="image-container" onclick="openImage('images/manaLove.png')">
-        <img src="images/manaLove.png" alt="Mana Love">
-        <p>Mana Love</p>
-    </div>
-
-    <div class="image-container" onclick="openImage('images/manaOk.png')">
-        <img src="images/manaOk.png" alt="Mana OK">
-        <p>Mana OK</p>
-    </div>
-
-    <div class="image-container" onclick="openImage('images/manaPleading.png')">
-        <img src="images/manaPleading.png" alt="Mana Pleading">
-        <p>Mana Pleading</p>
-    </div>
+    <div id="image-gallery"></div>
 
     <div class="overlay" id="overlay" onclick="closeImage()">
         <div class="overlay-content">
@@ -148,6 +95,51 @@
     </div>
 
     <script>
+        const images = [
+            { src: 'images/manaAngel.png', alt: 'Mana Angel' },
+            { src: 'images/manaAngry.png', alt: 'Mana Angry' },
+            { src: 'images/manaBlushed.png', alt: 'Mana Blushed' },
+            { src: 'images/manaCelebration.png', alt: 'Mana Celebration' },
+            { src: 'images/manaComfy.png', alt: 'Mana Comfy' },
+            { src: 'images/manaCry.png', alt: 'Mana Cry' },
+            { src: 'images/manaEvilLaugh.png', alt: 'Mana Evil Laugh' },
+            { src: 'images/manaHello.png', alt: 'Mana Hello' },
+            { src: 'images/manaHug.png', alt: 'Mana Hug' },
+            { src: 'images/manaHug2.png', alt: 'Mana Hug 2' },
+            { src: 'images/manaHug3.png', alt: 'Mana Hug 3' },
+            { src: 'images/manaHug4.png', alt: 'Mana Hug 4' },
+            { src: 'images/manaKiss.png', alt: 'Mana Kiss' },
+            { src: 'images/manaLaugh.png', alt: 'Mana Laugh' },
+            { src: 'images/manaLick.png', alt: 'Mana Lick' },
+            { src: 'images/manaLooking.png', alt: 'Mana Looking' },
+            { src: 'images/manaLove.png', alt: 'Mana Love' },
+            { src: 'images/manaOk.png', alt: 'Mana OK' },
+            { src: 'images/manaPleading.png', alt: 'Mana Pleading' },
+            { src: 'images/manaSad.png', alt: 'Mana Sad' },
+            { src: 'images/manaStressed.png', alt: 'Mana Stressed' },
+            { src: 'images/manaTired.png', alt: 'Mana Tired' },
+            { src: 'images/manaUh.png', alt: 'Mana Uh' },
+        ];
+
+        const gallery = document.getElementById('image-gallery');
+
+        images.forEach(image => {
+            const container = document.createElement('div');
+            container.className = 'image-container';
+            container.onclick = () => openImage(image.src);
+
+            const img = document.createElement('img');
+            img.src = image.src;
+            img.alt = image.alt;
+
+            const caption = document.createElement('p');
+            caption.textContent = image.alt;
+
+            container.appendChild(img);
+            container.appendChild(caption);
+            gallery.appendChild(container);
+        });
+
         function openImage(imageSrc) {
             document.getElementById('fullImage').src = imageSrc;
             document.getElementById('overlay').style.display = 'flex';
