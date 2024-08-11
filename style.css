@@ -82,3 +82,7 @@ h2 {
     color: #8a8a8a;
     margin-bottom: 20px;
 }
+
+header {
+    background: transparent;
+}
