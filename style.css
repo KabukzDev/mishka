@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'San Francisco';
-    src: url(/SFDisplay.otf);
+    src: url(/Mana/SFDisplay.otf);
 }
 
 @font-face {
     font-family: 'San Francisco Thin';
-    src: url(/SFDisplayThin.ttf);
+    src: url(/Mana/SFDisplayThin.ttf);
 }
 
 body, h1, h2, p, ul {
