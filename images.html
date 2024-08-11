@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="manaFavicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
         body {
             display: flex;
@@ -13,22 +13,17 @@
             align-items: flex-start;
             min-height: 100vh;
             margin: 0;
-            background-color: #15202b; /* Twitter Dark Mode background color */
-            color: #ffffff; /* Twitter Dark Mode text color */
-            font-family: 'Roboto', sans-serif; /* Use Roboto as a fallback */
         }
 
         p {
-            font-size: 20px;
-            font-weight: 700; /* Make the font bold */
-            color: #1da1f2; /* Twitter Blue color */
-            margin-bottom: 20px;
+            color: #84d153;
+            font-size: 24px;
             text-align: center;
         }
 
         .image-container {
-            width: calc(50% - 10px); /* 4 columns, 20px margin on each side */
-            margin: 10px;
+            width: calc(80% - 10px);
+            margin: 0;
             cursor: pointer;
         }
 
@@ -56,7 +51,7 @@
         }
 
         .overlay img {
-            max-width: 80%;
+            max-width: 90%;
             max-height: 80%;
             border-radius: 8px;
         }
@@ -69,23 +64,33 @@
         }
 
         #image-gallery {
-            display: flex;
-            flex-direction: column;
+            display: grid;  
+            grid-template-columns: repeat(4, 1fr); /* Creates 3 equal-width columns */
+            gap: 10px; /* Adds space between the grid items */
+            width: 100%;
+            padding: 10px;
+            justify-items: center;
             align-items: center;
         }
 
-        .copy-link-button, .close-button {
-            margin-top: 10px;
-            padding: 10px;
-            background-color: #3498db;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-left: 10px;
+        @media screen and (max-width: 500px) {
+            #image-gallery {
+                display: grid;  
+                grid-template-columns: repeat(2, 1fr);
+                gap: 5px;
+                width: 100%;
+                padding: 5px;
+                justify-items: center;
+                align-items: center;
+            }
+            .image-container {
+                width: calc(60% - 10px);
+                margin: 0;
+                cursor: pointer;
+            }
         }
     </style>
-    <title>Mana Images API</title>
+    <title>Mishka Images API</title>
 </head>
 <body>
     <div id="image-gallery"></div>
@@ -94,52 +99,107 @@
         <div class="overlay-content">
             <img id="fullImage" alt="Full Image">
             <div class="button-container">
-                <button class="copy-link-button" onclick="copyImageLink()">Copy Image Link</button>
-                <button class="close-button" onclick="closeImage()">Close</button>
+                <button class="github-button" onclick="copyImageLink()">Copy Image Link</button>
+                <button class="github-button" onclick="closeImage()">Close</button>
             </div>
         </div>
     </div>
 
     <script>
         const images = [
-            { src: 'images/manaAngel.png', alt: 'Mana Angel' },
-            { src: 'images/manaAngry.png', alt: 'Mana Angry' },
-            { src: 'images/manaBlushed.png', alt: 'Mana Blushed' },
-            { src: 'images/manaCelebration.png', alt: 'Mana Celebration' },
-            { src: 'images/manaComfy.png', alt: 'Mana Comfy' },
-            { src: 'images/manaCry.png', alt: 'Mana Cry' },
-            { src: 'images/manaEvilLaugh.png', alt: 'Mana Evil Laugh' },
-            { src: 'images/manaEvilLaugh2.png', alt: 'Mana Evil Laugh 2' },
-            { src: 'images/manaHello.png', alt: 'Mana Hello' },
-            { src: 'images/manaHug.png', alt: 'Mana Hug' },
-            { src: 'images/manaHug2.png', alt: 'Mana Hug 2' },
-            { src: 'images/manaHug3.png', alt: 'Mana Hug 3' },
-            { src: 'images/manaHug4.png', alt: 'Mana Hug 4' },
-            { src: 'images/manaImpressed.png', alt: 'Mana Impressed' },
-            { src: 'images/manaImpressed2.png', alt: 'Mana Impressed 2' },
-            { src: 'images/manaKiss.png', alt: 'Mana Kiss' },
-            { src: 'images/manaLaugh.png', alt: 'Mana Laugh' },
-            { src: 'images/manaLick.png', alt: 'Mana Lick' },
-            { src: 'images/manaLooking.png', alt: 'Mana Looking' },
-            { src: 'images/manaLooking2.png', alt: 'Mana Looking 2' },
-            { src: 'images/manaLove.png', alt: 'Mana Love' },
-            { src: 'images/manaLove2.png', alt: 'Mana Love 2' },
-            { src: 'images/manaOk.png', alt: 'Mana OK' },
-            { src: 'images/manaOk2.png', alt: 'Mana OK 2' },
-            { src: 'images/manaPatPat.png', alt: 'Mana Pat Pat' },
-            { src: 'images/manaPleading.png', alt: 'Mana Pleading' },
-            { src: 'images/manaSad.png', alt: 'Mana Sad' },
-            { src: 'images/manaStressed.png', alt: 'Mana Stressed' },
-            { src: 'images/manaScared.png', alt: 'Mana Scared' },
-            { src: 'images/manaTired.png', alt: 'Mana Tired' },
-            { src: 'images/manaTired2.png', alt: 'Mana Tired 2' },
-            { src: 'images/manaQuestion.png', alt: 'Mana Question' },
-            { src: 'images/manaShy.png', alt: 'Mana Shy' },
-            { src: 'images/manaSorry.png', alt: 'Mana Sorry' },
-            { src: 'images/manaThink.png', alt: 'Mana Think' },
-            { src: 'images/manaThink2.png', alt: 'Mana Think 2' },
-            { src: 'images/manaUh.png', alt: 'Mana Uh' },
-            { src: 'images/manaYes.png', alt: 'Mana Yes' },
+            { src: 'images/Mana Archive/manaAngel.png', alt: 'Mana Angel' },
+            { src: 'images/Mana Archive/manaBlushed.png', alt: 'Mana Blushed' },
+            { src: 'images/Mana Archive/manaAngry.png', alt: 'Mana Angry' },
+            { src: 'images/Mana Archive/manaCelebration.png', alt: 'Mana Celebration' },
+            { src: 'images/Mana Archive/manaComfy.png', alt: 'Mana Comfy' },
+            { src: 'images/Mana Archive/manaCry.png', alt: 'Mana Cry' },
+            { src: 'images/Mana Archive/manaEvilLaugh.png', alt: 'Mana Evil Laugh' },
+            { src: 'images/Mana Archive/manaEvilLaugh2.png', alt: 'Mana Evil Laugh 2' },
+            { src: 'images/Mana Archive/manaHello.png', alt: 'Mana Hello' },
+            { src: 'images/Mana Archive/manaHug.png', alt: 'Mana Hug' },
+            { src: 'images/Mana Archive/manaHug2.png', alt: 'Mana Hug 2' },
+            { src: 'images/Mana Archive/manaHug3.png', alt: 'Mana Hug 3' },
+            { src: 'images/Mana Archive/manaHug4.png', alt: 'Mana Hug 4' },
+            { src: 'images/Mana Archive/manaImpressed.png', alt: 'Mana Impressed' },
+            { src: 'images/Mana Archive/manaImpressed2.png', alt: 'Mana Impressed 2' },
+            { src: 'images/Mana Archive/manaKiss.png', alt: 'Mana Kiss' },
+            { src: 'images/Mana Archive/manaLaugh.png', alt: 'Mana Laugh' },
+            { src: 'images/Mana Archive/manaLick.png', alt: 'Mana Lick' },
+            { src: 'images/Mana Archive/manaLooking.png', alt: 'Mana Looking' },
+            { src: 'images/Mana Archive/manaLooking2.png', alt: 'Mana Looking 2' },
+            { src: 'images/Mana Archive/manaLove.png', alt: 'Mana Love' },
+            { src: 'images/Mana Archive/manaLove2.png', alt: 'Mana Love 2' },
+            { src: 'images/Mana Archive/manaOk.png', alt: 'Mana OK' },
+            { src: 'images/Mana Archive/manaOk2.png', alt: 'Mana OK 2' },
+            { src: 'images/Mana Archive/manaPatPat.png', alt: 'Mana Pat Pat' },
+            { src: 'images/Mana Archive/manaPleading.png', alt: 'Mana Pleading' },
+            { src: 'images/Mana Archive/manaSad.png', alt: 'Mana Sad' },
+            { src: 'images/Mana Archive/manaStressed.png', alt: 'Mana Stressed' },
+            { src: 'images/Mana Archive/manaScared.png', alt: 'Mana Scared' },
+            { src: 'images/Mana Archive/manaTired.png', alt: 'Mana Tired' },
+            { src: 'images/Mana Archive/manaTired2.png', alt: 'Mana Tired 2' },
+            { src: 'images/Mana Archive/manaQuestion.png', alt: 'Mana Question' },
+            { src: 'images/Mana Archive/manaShy.png', alt: 'Mana Shy' },
+            { src: 'images/Mana Archive/manaSorry.png', alt: 'Mana Sorry' },
+            { src: 'images/Mana Archive/manaThink.png', alt: 'Mana Think' },
+            { src: 'images/Mana Archive/manaThink2.png', alt: 'Mana Think 2' },
+            { src: 'images/Mana Archive/manaUh.png', alt: 'Mana Uh' },
+            { src: 'images/Mana Archive/manaYes.png', alt: 'Mana Yes' },
+            { src: "images/Mishka/mishkaAngry.png", alt: "mishka Angry" },
+            { src: "images/Mishka/mishkaAngry2.png", alt: "mishka Angry 2" },
+            { src: "images/Mishka/mishkaAngry3.png", alt: "mishka Angry 3" },
+            { src: "images/Mishka/mishkaAngryBlush.png", alt: "mishka Angry Blush" },
+            { src: "images/Mishka/mishkaAngryBlush2.png", alt: "mishka Angry Blush 2" },
+            { src: "images/Mishka/mishkaBlushed.png", alt: "mishka Blushed" },
+            { src: "images/Mishka/mishkaBlushed2.png", alt: "mishka Blushed 2" },
+            { src: "images/Mishka/mishkaBlushed3.png", alt: "mishka Blushed 3" },
+            { src: "images/Mishka/mishkaBrave.png", alt: "mishka Brave" },
+            { src: "images/Mishka/mishkaCelebration.png", alt: "mishka Celebration" },
+            { src: "images/Mishka/mishkaChill.png", alt: "mishka Chill" },
+            { src: "images/Mishka/mishkaChill2.png", alt: "mishka Chill 2" },
+            { src: "images/Mishka/mishkaConfused.png", alt: "mishka Confused" },
+            { src: "images/Mishka/mishkaExtraBlush.png", alt: "mishka Extra Blush" },
+            { src: "images/Mishka/mishkaForeverAlone.png", alt: "mishka Forever Alone" },
+            { src: "images/Mishka/mishkaFruity.png", alt: "mishka Fruity" },
+            { src: "images/Mishka/mishkaGlad.png", alt: "mishka Glad" },
+            { src: "images/Mishka/mishkaGlad2.png", alt: "mishka Glad 2" },
+            { src: "images/Mishka/mishkaGM.png", alt: "mishka GM" },
+            { src: "images/Mishka/mishkaHappy.png", alt: "mishka Happy" },
+            { src: "images/Mishka/mishkaHappy2.png", alt: "mishka Happy 2" },
+            { src: "images/Mishka/mishkaHappy3.png", alt: "mishka Happy 3" },
+            { src: "images/Mishka/mishkaHot.png", alt: "mishka Hot" },
+            { src: "images/Mishka/mishkaHot2.png", alt: "mishka Hot 2" },
+            { src: "images/Mishka/mishkaHug.png", alt: "mishka Hug" },
+            { src: "images/Mishka/mishkaHuh.png", alt: "mishka Huh" },
+            { src: "images/Mishka/mishkaHuh2.png", alt: "mishka Huh 2" },
+            { src: "images/Mishka/mishkaHurt.png", alt: "mishka Hurt" },
+            { src: "images/Mishka/mishkaInLove.png", alt: "mishka In Love" },
+            { src: "images/Mishka/mishkaLove.png", alt: "mishka Love" },
+            { src: "images/Mishka/mishkaLove2.png", alt: "mishka Love 2" },
+            { src: "images/Mishka/mishkaOk.png", alt: "mishka Ok" },
+            { src: "images/Mishka/mishkaOk2.png", alt: "mishka Ok 2" },
+            { src: "images/Mishka/mishkaPat.png", alt: "mishka Pat" },
+            { src: "images/Mishka/mishkaPeek.png", alt: "mishka Peek" },
+            { src: "images/Mishka/mishkaPeek2.png", alt: "mishka Peek 2" },
+            { src: "images/Mishka/mishkaPog.png", alt: "mishka Pog" },
+            { src: "images/Mishka/mishkaSad.png", alt: "mishka Sad" },
+            { src: "images/Mishka/mishkaScared.png", alt: "mishka Scared" },
+            { src: "images/Mishka/mishkaScream.png", alt: "mishka Scream" },
+            { src: "images/Mishka/mishkaSilly.png", alt: "mishka Silly" },
+            { src: "images/Mishka/mishkaSilly2.png", alt: "mishka Silly 2" },
+            { src: "images/Mishka/mishkaSmol.png", alt: "mishka Smol" },
+            { src: "images/Mishka/mishkaSorry.png", alt: "mishka Sorry" },
+            { src: "images/Mishka/mishkaThink.png", alt: "mishka Think" },
+            { src: "images/Mishka/mishkaTired.png", alt: "mishka Tired" },
+            { src: "images/Mishka/mishkaTired2.png", alt: "mishka Tired 2" },
+            { src: "images/Mishka/mishkaTired3.png", alt: "mishka Tired 3" },
+            { src: "images/Mishka/mishkaTired4.png", alt: "mishka Tired 4" },
+            { src: "images/Mishka/mishkaWokeUp.png", alt: "mishka Woke Up" },
+            { src: "images/Mishka/mishkaWorry.png", alt: "mishka Worry" },
+            { src: "images/Mishka/mishkaWorry2.png", alt: "mishka Worry 2" },
+            { src: "images/Mishka/mishkaWorry3.png", alt: "mishka Worry 3" },
+            { src: "images/Mishka/mishkaYawn.png", alt: "mishka Yawn" },
+            { src: "images/Mishka/mishkaYawn2.png", alt: "mishka Yawn 2" }
         ];
 
         const gallery = document.getElementById('image-gallery');
@@ -181,4 +241,5 @@
     </script>
 </body>
 </html>
+    
     
