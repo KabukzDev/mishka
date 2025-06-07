@@ -1,0 +1,74 @@
+[
+  {
+    "src": "./assets/images/cats/angry1.jpg",
+    "alt": "Angry 1"
+  },
+  {
+    "src": "./assets/images/cats/angry2.png",
+    "alt": "Angry 2"
+  },
+  {
+    "src": "./assets/images/cats/blush.jpeg",
+    "alt": "Blush"
+  },
+  {
+    "src": "./assets/images/cats/cat.jpeg",
+    "alt": "Cat"
+  },
+  {
+    "src": "./assets/images/cats/chill1.png",
+    "alt": "Chill 1"
+  },
+  {
+    "src": "./assets/images/cats/chill2.jpeg",
+    "alt": "Chill 2"
+  },
+  {
+    "src": "./assets/images/cats/chill3.png",
+    "alt": "Chill 3"
+  },
+  {
+    "src": "./assets/images/cats/chill4.jpg",
+    "alt": "Chill 4"
+  },
+  {
+    "src": "./assets/images/cats/happy1.gif",
+    "alt": "Happy 1"
+  },
+  {
+    "src": "./assets/images/cats/happy2.jpg",
+    "alt": "Happy 2"
+  },
+  {
+    "src": "./assets/images/cats/happy3.jpg",
+    "alt": "Happy 3"
+  },
+  {
+    "src": "./assets/images/cats/hug1.png",
+    "alt": "Hug 1"
+  },
+  {
+    "src": "./assets/images/cats/hug2.jpg",
+    "alt": "Hug 2"
+  },
+  {
+    "src": "./assets/images/cats/hug3.jpg",
+    "alt": "Hug 3"
+  },
+  {
+    "src": "./assets/images/cats/kiss1.jpg",
+    "alt": "Kiss 1"
+  },
+  {
+    "src": "./assets/images/cats/kiss2.jpg",
+    "alt": "Kiss 2"
+  },
+  {
+    "src": "./assets/images/cats/kiss3.jpg",
+    "alt": "Kiss 3"
+  },
+  {
+    "src": "./assets/images/cats/kiss4.jpg",
+    "alt": "Kiss 4"
+  }
+]
